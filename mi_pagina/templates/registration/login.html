@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Mi Sitio</title>
+    <style>
+        body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* AQUÍ PONES EL LINK DE LA IMAGEN DE GOOGLE */
+    background-image: url('https://wallpapercrafter.com/desktop3/880739-Anime-Detective-Conan-Conan-Edogawa-Shinichi-Kudo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    color: #301f0c;
+    margin-bottom: 25px;
+    font-size: 32px; /* <-- Agrega esta línea. Puedes subir el número si quieres que sea más grande */
+    font-weight: bold; /* Para que se vea más grueso y resalte */
+    letter-spacing: 1px; /* Opcional: separa un poquito las letras para que se vea más "clean" */
+}
+
+/* Estilo para los textos de Django */
+.form-group p {
+    text-align: left;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Para que el padding no agrande el input */
+}
+
+.btn-login {
+    background-color: #2e0806;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #e4dc9b;
+}
+/* Definimos la animación */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Empieza 20px más abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Termina en su lugar original */
+    }
+}
+
+/* Se la aplicamos al login-box */
+.login-box {
+    animation: aparecer 0.8s ease-out; /* Tarda 0.8 segundos en aparecer */
+}
+
+.btn-login:active {
+    transform: scale(0.98); /* Se hunde un poquito al hacer clic */
+}
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Bienvenido</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
